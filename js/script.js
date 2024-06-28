@@ -1,18 +1,19 @@
-function move(){
+function move() {
     let element = document.getElementById("myBar");
-    let width = 0
+    let button = document.getElementById("myButton");
+    let width = 0;
+    button.disabled = true; // Disable the button
     let id = setInterval(function() {
-        frame(element, width++, id);
+        frame(element, width++, id, button);
     }, 10);
-    
 }
 
-function frame(element,width,id) {
+function frame(element, width, id, button) {
     if (width >= 100) {
-      clearInterval(id);
+        clearInterval(id);
+        button.disabled = false; // Re-enable the button when done
     } else {
-      width++; 
-      element.style.width = width + '%'; 
-      element.innerHTML = width * 1  + '%';
+        element.style.width = width + '%';
+        element.innerHTML = width + '%';
     }
-  }
+}
